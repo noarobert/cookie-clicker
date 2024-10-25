@@ -1,8 +1,7 @@
 "use client"
 import { CookieZone } from "@/components/CookieZone";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { ShopItem } from "@/components/ShopItem";
-import { Interface } from "readline";
 import {PurchasedItem} from"@/components/PurchasedItem";
 
 export interface ShopItemType{
@@ -53,7 +52,7 @@ export default function Home() {
           <CookieZone totalCookies={cookies}cps={cookiesPerSecond}onCookieClick={()=> setCookies(cookies+1) }cookiesPerSecond={30} /> 
         </div>
         <div className="center flex-1 bg-pink-500 grid grid-cols-4 gap-3 p-5">
-          {purchasedItems.filter(o => o.total > 0).map(item =><PurchasedItem item={item}/>)}
+          {purchasedItems.filter(o => o.total > 0).map(item =><PurchasedItem item={item} key={item.id}/>)}
         </div>
         <div className="right w-1/4 bg-yellow-500 flex flex-col gap-3 p-2">
         {purchasedItems.map(item =>
